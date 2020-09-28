@@ -1,0 +1,67 @@
+
+    
+    .user-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+        .img {
+          width: 300px;
+          border-radius: 50%;
+            }
+      
+      .container.img {
+        
+          border-radius: 50%;
+        
+      }
+      
+  
+      
+      .eliminar-label{
+        font-size: 0.8cm;
+      }
+      @media (max-width: 1000px) {
+       
+        .eliminar-label{
+          font-size: 0.5cm;
+        }
+        
+        }
+      
+      @media (max-width: 500px) {
+       
+      .eliminar-label{
+        font-size: 0.4cm;
+      }
+      
+      }
+      @media (max-width: 350px) {
+       
+        .eliminar-label{
+          font-size: 0.3cm;
+        }
+        
+        } 
+        .inputfile {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1;
+          }
+
+          .labelfile {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #10849B;
+            display: inline-block;
+            transition: all .5s;
+            cursor: pointer;
+            padding: 15px 40px !important;
+            text-transform: uppercase;
+            width: fit-content;
+            text-align: center;
+            }

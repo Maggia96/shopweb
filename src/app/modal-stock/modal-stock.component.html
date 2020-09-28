@@ -1,0 +1,73 @@
+<div class="modal fade" data-backdrop="static" id="modalStock" tabindex="-1" role="dialog"
+  aria-labelledby="modelTitleId" aria-hidden="true">
+  <div style="max-width: 80%;     margin-left: 10%;" class="modal-dialog modal-lg" role="document">
+    <!-- <app-load-screen></app-load-screen>-->
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 1px solid #EE477F;">
+        <h5 class="modal-title">Stock del Producto: {{servicio.ProductoSeleccionado.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="salir()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form name="form" #form="ngForm">
+          <div class="div_principal" >
+            <div>
+              <img width="200px" style=" border: 2px solid #EE477F;   margin-bottom: 20px;" src="assets\{{servicio.ProductoSeleccionado.imagen}}">
+            </div>
+            <div class="row" style="    display: flex;
+                      justify-content: center;">
+            <div *ngFor=" let talle of servicio.talles">
+
+              <p class="talles_parr" >{{talle.talle}} <br> {{talle.stock}} </p>
+
+
+              <button hidden class=" btn-success " style="    height: max-content;
+        border-radius: 10px;" (click)="actualizarStock(talle.idTalle)">actualizar</button>
+            </div>
+            </div>
+          </div>
+          <div class="footer_options" ><div style="text-align: center;">
+          <button 
+          data-toggle="modal"
+          data-target="#modalTalles"
+          class="btn_talles" style=" border-color: #10849B;
+          
+          width: 85px;
+          background: #10849B;
+          border-color: #10849B;
+          color: white;">Talles</button>
+          </div>
+          <div class="div_ejecutar" >
+          
+          <select style="TEXT-ALIGN: CENTER;
+          PADDING-LEFT: 1%; text-transform: uppercase; border-color: #10849B;  border-bottom: 2px solid #EE477F;
+          color: #10849B;
+          width: 85px;" [(ngModel)]="servicio.talleSeleccionado" name="talles" id="talles">
+          <option value="" > </option>>
+          <option *ngFor="let talles of servicio.talleslista" value="{{talles.id}}">{{talles.talle}}</option>
+          </select>
+          <input style="    border-color: #10849B;
+          color: #10849B; border-bottom: 2px solid #EE477F;
+          width: 85px;"  type="number" name="cantidad2" id="cantidad2" [(ngModel)]="cantidad2" placeholder="Cantidad">
+          <button style="    border-color: #10849B;
+          /* color: #10849B; */
+          width: 85px;
+          background: #10849B;
+          border-color: #10849B;
+          color: white;
+          margin-left: 10px;" (click)="generarTalleNuevo()">Update</button>
+          </div></div>
+          <div hidden> <input style="    border-color: #10849B;
+            color: #10849B;
+            width: 85px;" name="cantidad" id="cantidad" [(ngModel)]="cantidad" type="number"></div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-modal-talle  ></app-modal-talle>

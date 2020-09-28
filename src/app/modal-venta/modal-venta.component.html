@@ -1,0 +1,349 @@
+<div
+  class="modal fade"
+  data-backdrop="static"
+  id="modalventa"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modelTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" style="min-width: 80%;" role="document">
+    <!-- <app-load-screen></app-load-screen>-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="text-align: center;" class="modal-title" [hidden] ="servicio.ventaActual.estado == true"  >
+          Seleccionar productos
+        </h5>
+        <h5 style="text-align: center;" class="modal-title" [hidden] ="servicio.ventaActual.estado == false" >
+         Detalles de venta
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click) ="salir()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="form" #form="ngForm">
+          <div class="row">
+            <div class="col-md-3" [hidden] ="servicio.ventaActual.estado == true" >
+              <input
+                style="margin-bottom: 10px;"
+                [(ngModel)]="buscartxt"
+                name="buscar"
+                id="buscar"
+                class="buscar form-control"
+                type="text"
+                placeholder="Buscar"
+                (keyup)="buscar()"
+              />
+              <div>
+                <div
+                  class="media text-muted pt-3 zoomBoton"
+                  style="display: block; text-align: center;"
+                  *ngFor="let producto of productos"
+                  (click)="Ver(producto)"
+                >
+                  <strong class="d-block text-gray-dark">{{
+                    producto.nombre
+                  }}</strong>
+                  <img
+                    width="200px"
+                    src="assets/{{ producto.imagen }}"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div style="display: grid; justify-content: center;">
+                <img
+                  width="200px"
+                  src="assets/{{ servicio.ProductoSeleccionado.imagen }}"
+                  alt=""
+                />
+                <p style="text-align: center;">
+                  {{ servicio.ProductoSeleccionado.nombre }}
+                </p>
+                <select
+                  class="form-control"
+                  style="
+                    text-align: CENTER;
+                    padding-left: 1%;
+                    text-transform: uppercase;
+                    border-color: #10849b;
+                    border-bottom: 2px solid #ee477f;
+                    color: #10849b;
+                    margin-bottom: 15px;
+                  "
+                  [(ngModel)]="servicio.talleSeleccionado"
+                  name="talles"
+                  id="talles"
+                >
+                  <option
+                    *ngFor="let talles of servicio.talles"
+                    value="{{ talles.idTalle }}"
+                    >{{ talles.talle }} : "{{ talles.stock }} "</option
+                  >
+                </select>
+                <input
+                  style="text-align: center; margin-bottom: 15px;"
+                  class="form-control"
+                  type="number"
+                  name="cantidad"
+                  id="cantidad"
+                  placeholder="cantidad"
+                  [(ngModel)]="cantidad"
+                />
+                <div style="text-align: center; margin-bottom: 10px;">
+                  <button (click)="AgregarDetalle()" class="btn-danger">
+                    agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-md-9"   [class]="
+              servicio.ventaActual.estado == true ? 'col-md-12' : 'col-md-9'
+            "
+              style="
+                border-left: 2px solid #ee477f;
+                max-height: 60vh;
+                overflow: auto;
+              "
+            >
+              <div  style="display: flex;">
+                <input
+                  class="form-control"
+                  [(ngModel)]="servicio.ventaActual.cliente"
+                  name="cliente"
+                  id="cliente"
+                  type="text"
+                  placeholder="Info del cliente"
+                  [disabled] ="servicio.ventaActual.estado == true"
+                />
+              
+                <input
+                  class="form-control"
+                  [(ngModel)]="servicio.ventaActual.fecha"
+                  name="fecha"
+                  id="fecha"
+                  type="date"
+                  [disabled] ="servicio.ventaActual.estado == true"
+                />
+              </div>
+              <div
+                style="
+                  display: flex;
+
+                  margin-top: 15px;
+                "
+              >
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  Imagen
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  Descrip.
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  Talle
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  Precio.U
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  Cantidad
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  Total
+                </p>
+              </div>
+              <div
+                (click)="eliminarDetalle(detalle)"
+                style="
+                  display: flex;
+                  justify-content: space-around;
+                  border-top: 1px solid #ee477f;
+                "
+                class="media text-muted pt-3 zoomBoton"
+                *ngFor="let detalle of servicio.Detalles"
+              >
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  <img width="50px" src="assets/{{ detalle.imagen }}" alt="" />
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                  class="d-block text-gray-dark"
+                >
+                  {{ detalle.nombre }}
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  {{ detalle.talle }}
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  $ {{ detalle.precioVenta }}
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  {{ detalle.cantidad }}
+                </p>
+                <p
+                  style="
+                    max-width: 16.5%;
+                    min-width: 16.5%;
+                    overflow: auto;
+                    text-align: center;
+                  "
+                >
+                  $ {{ detalle.Total }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="display: flex;     justify-content: space-between;">
+        <button  [hidden] = "servicio.Detalles == null || servicio.ventaActual.estado ==true"  data-dismiss="modal" class="btn-danger" (click)="finalizar_venta()" >Finalizar Venta</button>
+        <button  [hidden] = "servicio.ventaActual.estado == false"  data-dismiss="modal" class="btn-danger" (click)="anular()" [hidden] ="servicio.anular" >Anular Venta</button>
+        <div style="display: grid;">
+          <div
+            style="
+              display: flex;
+              justify-content: flex-end;
+              align-items: baseline;
+            "
+          >
+            <p style="margin-right: 10px;">SubTotal</p>
+            <input
+              style="max-width: 100px; min-width: 100px;"
+              (click)="calcularTotal()"
+              class="form-control"
+              type="text"
+              name="subtotal"
+              id="subtotal"
+              [(ngModel)]="servicio.ventaActual.subTotal"
+              placeholder="SubTotal"
+              disabled
+            />
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: flex-end;
+              align-items: baseline;
+            "
+          >
+            <p style="margin-right: 10px;">Descuento</p>
+            <input
+              style="max-width: 100px; min-width: 100px;"
+              class="form-control"
+              type="text"
+              name="descuento"
+              id="descuento"
+              [(ngModel)]="servicio.ventaActual.descuento"
+              placeholder="Descuento"
+              (keyup)="total_pagar()  "
+               [disabled] ="servicio.ventaActual.estado == true"
+            />
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: flex-end;
+              align-items: baseline;
+            "
+          >
+            <p style="margin-right: 10px;">Total</p>
+            <input
+              [(ngModel)]="servicio.ventaActual.total"
+              style="max-width: 100px; min-width: 100px;"
+              class="form-control"
+              type="text"
+              name="total"
+              id="total"
+              placeholder="Total"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

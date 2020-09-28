@@ -1,0 +1,32 @@
+input[type="text"]{
+    padding: 8% 15px;
+    background-color: #f5f6f7;
+    border: none;
+    font-size: 16px;
+    width: 80%;
+    
+  
+}
+input[type="password"]{
+    padding: 8% 15px;
+    background-color: #f5f6f7;
+    border: none;
+    font-size: 16px;
+    width: 80%;
+
+
+}
+input:focus {
+    border-bottom: 2px solid #ee477f;
+    outline-color:#11859c;
+  }
+
+.logo_login{
+width: 30%;
+}
+@media(max-width:767px){
+    .logo_login{
+        width: 50%!important;
+        } 
+}
+

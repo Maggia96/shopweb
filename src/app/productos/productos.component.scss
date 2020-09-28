@@ -1,0 +1,171 @@
+
+
+
+@media (min-width: 770px) {
+    .zoomBoton {
+    transition: transform 0.5s;
+  }
+  .zoomBoton:hover {
+    transform: scale(1.1);
+  }
+  
+  }
+  
+  @media (max-width: 650px) {
+    .responsive {
+      display: none;
+    }
+  }
+  
+
+  
+  @media (max-width: 550px) {
+    .titulo {
+      margin-top: 20px;
+      font-size: large;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .titulo {
+     display: none;
+    }
+  }
+  
+  .nuevo-img {
+    width: 50px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 550px) {
+    .nuevo-img {
+      float: left;
+      
+      height: 40px;
+      border-color: cornflowerblue;
+    }
+  }
+  
+  .nombre {
+    font-size: xx-large;
+  }
+  
+  @media (max-width: 550px) {
+    .nombre {
+      font-size: large;
+      margin-bottom: 15px;
+    }
+  }
+  
+  @media (max-width: 310px) {
+    .nombre {
+      font-size: xx-small;
+    }
+  }
+  
+  .botones {
+    cursor: pointer;
+    width: 60px;
+  }
+  @media (max-width: 550px) {
+    .botones {
+      width: 45px;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .botones {
+      width: 30px;
+    }
+  }
+  
+  .foto-Producto {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+  }
+  
+  @media (max-width: 550px) {
+    .foto-Producto {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
+    }
+  }
+  
+  .buscar {
+    width: 15%;
+    float: right;
+    margin-top: 5px;
+  }
+  
+  @media (max-width: 720px) {
+    .buscar {
+      width: 30%;
+      float: right;
+    }
+  }
+   
+  .vistas{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .paginacion{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    place-content: space-around flex-start;
+    margin-top: 20px;
+  }
+  
+  .prueba{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .botones-Producto{
+    display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  }
+  
+  
+  .encabezado {
+    margin-bottom: 2%;
+  
+  
+    display: flex;
+    align-items: center;
+    place-content: space-around;
+    flex-direction: row;
+  
+  }
+  
+   
+    .buscador {
+      
+      display: flex;
+      align-items: flex-end;
+    }
+      .img {
+        width: 40px;
+      }
+  
+      .input {
+        width: 100%;
+      }
+    
+  
+  .encabezado2{
+    margin-bottom: 2%;
+    margin-right: 1%;
+    margin-left: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  
+  }

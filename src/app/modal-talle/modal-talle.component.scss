@@ -1,0 +1,18 @@
+.talle_div_principal{
+    text-align: center;
+    display: grid;
+    justify-content: center;
+}
+
+@media(max-width:999px){
+  
+}
+
+.btn-danger.disabled, .btn-danger:disabled{
+    background-color: #EE477F;
+    border-color: #EE477F   ;
+}
+.talles_P:hover{
+background-color: #10849B!important;
+cursor: pointer;
+}

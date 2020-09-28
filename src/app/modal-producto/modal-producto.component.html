@@ -1,0 +1,238 @@
+
+<div
+class="modal fade"
+data-backdrop="static"
+id="modalProducto"
+tabindex="-1"
+role="dialog"
+aria-labelledby="modelTitleId"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-lg" role="document">
+ <!-- <app-load-screen></app-load-screen>-->
+  <div class="modal-content">
+    <div *ngIf="!eliminarProducto" class="modal-header">
+      <h5 style="text-align:center;" class="modal-title">Detalles del Producto</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+        (click)="salir()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+      <form name="form" #form="ngForm">
+        <div *ngIf="!eliminarProducto" class="row">
+          <div class="col-md-6 user-photo">
+            <div style="    display: grid; text-align: center;">
+             
+              <div><img
+              style="width: 100%; PADDING: 6%;"
+              src="assets\{{servicio.ProductoSeleccionado.imagen}}"
+              /></div>
+
+              <br />
+<div>
+<label class="labelfile"> subir imagen
+<input class="inputfile" id="inputfile" type="file" (click)="subirImagenClean()"  (change)="OnFileChanged($event)">
+</label></div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+          
+              <div class="form-group">
+              <label for="">Descripcion</label>
+                <input
+                  maxLength="200"
+                  class="h5 mb-3 form-control text-center"
+                  name="nombre"
+                  [(ngModel)]="servicio.ProductoSeleccionado.nombre"
+                  type="text"
+                  required
+                  (keyup)="ValidarInput()"
+                  
+                 
+                  />
+              </div>
+
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="">Precio de compra</label>
+                  <input
+                    maxLength="8"
+                    minlength="1"
+                    class="h5 mb-3 form-control text-center"
+                    name="precioCompra"
+                    [(ngModel)]="servicio.ProductoSeleccionado.precioCompra"
+                    type="text"
+                   
+                    required
+                    (keypress)="onlyNumberKey($event)"
+                    (keyup)="ValidarInput() ; CalcularPorcentaje();"
+                     placeholder="Precio de compra"  
+                
+                    
+                  />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="">Precio de venta</label>
+                  <input
+               
+                  maxLength="8"
+                  minlength="1"
+                    placeholder="Precio de venta"
+                    maxLength="15"
+                    class="h5 mb-3 form-control text-center"
+                    name="precioVenta"
+                    [(ngModel)]="servicio.ProductoSeleccionado.precioVenta"
+                    type="text"
+                    required
+                    (keypress)="onlyNumberKey($event)"
+                    (keyup)="ValidarInput(); CalcularPorcentaje();"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="">Sexo</label>
+                  
+                 
+                  
+                  <input
+                  style="text-transform: uppercase;"
+                    maxLength="1"
+                    minlength="1"
+                    class="h5 mb-3 form-control text-center"
+                    name="sexo"
+                    [(ngModel)]="servicio.ProductoSeleccionado.sexo"
+                    type="text"
+                    
+                    required
+                    
+                    (keyup)="ValidarInput()"
+                     placeholder="Sexo"  
+                    
+                  />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="">Porcentaje</label>
+                  <input
+                  maxLength="5"
+                  minlength="1"
+                placeholder="Porcentaje"
+                    maxLength="15"
+                    class="h5 mb-3 form-control text-center"
+                    name="porcentaje"
+                    [(ngModel)]="servicio.ProductoSeleccionado.porcentaje"
+                    type="text"
+                    required
+                    (keypress)="onlyNumberKey($event)"
+                    (keyup)="ValidarInput()"
+                  
+                  />
+                </div>
+              </div>
+
+         <div  [hidden]="!servicio.nuevoProducto" style="    display: flex;
+         justify-content: center;
+         padding-top: 28px;">
+          <button 
+          type="submit"
+          class="btn btn-primary btn-block"
+          
+          [disabled]="form.invalid "
+          (click)="guardar()"
+        >
+          Guardar
+        </button>
+         </div>
+
+            
+          </div>
+        </div>
+
+        <div
+          style="    height: 20vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      "
+          *ngIf="eliminarProducto"
+          id="mensaje"
+        >
+          <div>
+            <label class="eliminar-label"
+              >Seguro que desea eliminar al Producto
+              {{ servicio.ProductoSeleccionado.nombre }} ?
+            </label>
+
+            <div 
+              style="display: flex;
+             flex-direction: row;
+      
+            justify-content: space-around;"
+      
+            >
+              <button
+                data-dismiss="modal"
+                style="margin-right: 20px; width: 40%;"
+                class="btn btn-danger "
+                (click)="eliminar()"
+              >
+                Eliminar
+              </button>
+
+              <button
+                class="btn btn-primary "
+                style="width: 40%;"
+                (click)="cancelar()"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div   [hidden]="servicio.nuevoProducto" style=" display: flex;
+    justify-content: space-between;
+    align-items: flex-end;" *ngIf="!eliminarProducto" class="modal-footer">
+      <div
+      
+        class="buttons"
+        [style.display]="
+          servicio.eliminarProducto ? 'flex' : 'contents'
+        "
+      >
+        <button
+          class="btn btn-outline-danger"
+          (click)="mensajeEliminar()"
+          
+         
+        >
+          Eliminar
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          
+          [disabled]="form.invalid "
+          (click)="guardar()"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

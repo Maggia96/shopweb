@@ -1,0 +1,22 @@
+
+<nav [hidden]="!servicio.loguedo" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Arcoiris</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="/home" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" routerLink="/productos" href="#">Productos</a>
+        
+        <a class="nav-item nav-link" (click)="cargarTalles()" routerLink="/pdf" href="#">PDF</a>
+        <a class="nav-item nav-link " routerLink="/ventas" href="#">Ventas</a>
+        <a class="nav-item nav-link " routerLink="/compras" href="#">Compras</a>
+        <a class="nav-item nav-link " routerLink="/estadisticas" href="#">Estadisticas</a>
+        <a class="nav-item nav-link " (click)= "cerrar()" href="#">Salir</a>
+
+      </div>
+    </div>
+  </nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,42 @@
+.div_padre{
+    padding: 0 5%;
+}
+.cabeza{
+  
+    padding-top: 3%;
+    text-align: center;
+    display: flex;
+}
+.btn_ventas{
+    background-color: white!important;
+    color: #10849B!important;
+}
+.zoomBoton {
+    transition: transform 1s;
+    padding: 0 5%;
+  }
+  .zoomBoton:hover {
+    transform: scale(1.1);
+  }
+
+  .img_nuevo{
+    width: 80px;
+    margin-left: 91%;
+  }
+  
+  .img_head{
+    width: 200px;
+  }
+
+  @media(max-width:767px){
+    .img_head{
+      width: 100px;
+    }
+
+    .date_in{
+      width: 50px;
+    }
+    .p_ocultar_mobile{
+      display:none;
+    }
+  }

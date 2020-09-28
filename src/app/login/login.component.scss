@@ -1,0 +1,78 @@
+input[type="text"]{
+    padding: 8% 15px;
+    background-color: #f5f6f7;
+    border: none;
+    font-size: 16px;
+    width: 80%;
+    
+  
+}
+input[type="password"]{
+    padding: 8% 15px;
+    background-color: #f5f6f7;
+    border: none;
+    font-size: 16px;
+    width: 80%;
+
+
+}
+input:focus {
+    border-bottom: 2px solid #ee477f;
+    outline-color:#11859c;
+  }
+
+  .btn_acceder{
+  
+    background:linear-gradient(to right,#11859c, #ee477f);
+    color: white; 
+        width: 87%;
+        border:none;
+        margin-top: 35px;
+        font-size:24px;
+  }
+
+.logo_login{
+width: 30%;
+}
+@media(max-width:767px){
+    .logo_login{
+        width: 50%!important;
+        } 
+}
+
+@media(min-width:767px){
+    body{
+        padding-left: 25%;
+        padding-right: 25%;
+    
+    }
+    input[type="text"]{
+        padding: 3% 15px;
+        background-color: #f5f6f7;
+        border: none;
+        font-size: 16px;
+        width: 80%;
+        
+      
+    }
+    input[type="password"]{
+        padding: 3% 15px;
+        background-color: #f5f6f7;
+        border: none;
+        font-size: 16px;
+        width: 80%;
+    
+    
+    }
+    .btn_acceder{
+      
+        background:linear-gradient(to right,#11859c, #ee477f)!important;
+        color: white!important; 
+            width: 25%!important;
+            border:none!important;
+            margin-top: 35px!important;
+            font-size:24px!important;
+      }
+
+}
+

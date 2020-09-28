@@ -1,0 +1,81 @@
+<body>
+  
+    <div style="display: flex;
+    justify-content: space-between;  align-items: center; ">
+      <img
+        class="zoomBoton img_head "
+        src="assets\new.png"
+        (click)="NuevaVenta()"
+        data-toggle="modal"
+        data-target="#modalventa"
+      />
+      <div [hidden] ="servicio.anular">
+        <input class="date_in" type="date" name="desde" id="desde" [(ngModel)] = "fechas.desde">
+        <img class="zoomBoton"src="assets\buscar.png" style="width: 80px;" alt="" (click) ="ventasPorFechas()" >
+        <input class="date_in"  type="date" name="hasta" id="hasta" [(ngModel)]= "fechas.hasta" >
+      </div>
+      <img
+      class="zoomBoton img_head"
+      src="assets\anular.png"
+      (click)="cargarVentasAnuladas()"
+      [hidden] ="servicio.anular"
+     />
+
+   
+
+     <img
+    class="zoomBoton img_head"
+    src="assets\actualizar.png"
+    (click)="cargarVentas()"
+    [hidden] ="!servicio.anular"
+
+  />
+    </div>
+
+
+  
+
+  
+
+    
+  
+  <div class="div_padre">
+    <div class="my-3 p-3 bg-white rounded " style="box-shadow: 0 .125rem .25rem rgba(109,82,116,15.075)!important;">
+      <h5 class="pb-2 mb-0" style=" FONT-SIZE: 20PX;
+      TEXT-ALIGN: CENTER;
+   border-bottom: 1px solid #EE477F;"  [hidden] ="!servicio.anular">Facturas  anuladas</h5>
+      <h5 class="pb-2 mb-0" style=" FONT-SIZE: 20PX;
+      TEXT-ALIGN: CENTER;
+   border-bottom: 1px solid #EE477F;"  [hidden] ="servicio.anular">VENTAS</h5>
+      
+      
+      <div
+        data-toggle="modal"
+        data-target="#modalventa"
+        (click)="abrirDetalles(ventas)"
+        class="media text-muted pt-3 zoomBoton"
+        *ngFor="let ventas of servicio.ListaVentas"
+      >
+    
+        <div
+          class="media-body pb-3 mb-0 small lh-125 "
+          style="display: flex; justify-content: space-evenly; border-bottom: 1px solid #EE477F;"
+        >
+        <img   [hidden] ="anuladas" style="width: 43px;" src="assets\pagado.png" alt="">
+        
+        <img   [hidden] ="!anuladas" style="width: 43px;" src="assets\anulado.png" alt="">
+
+          <strong class="d-block text-gray-dark"
+            >CF: {{ ventas.cliente }}</strong
+          >
+          <p>Fecha: {{ ventas.fecha }}</p>
+
+          <p class="p_ocultar_mobile" >SubTotal: {{ ventas.subTotal }}</p>
+          <p class="p_ocultar_mobile" >Descuento: {{ ventas.descuento }}</p>
+          <p class="p_ocultar_mobile" >Total: {{ ventas.total }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<app-modal-venta></app-modal-venta>

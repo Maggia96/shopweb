@@ -1,0 +1,58 @@
+<div class="modal fade" data-backdrop="static" id="modalTalles" tabindex="-1" role="dialog"
+    aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <!-- <app-load-screen></app-load-screen>-->
+        <div class="modal-content" style="    border: 2px solid #EE477F;
+    border-style: dashed;">
+            <div class="modal-header" style="border-bottom: 1px solid #EE477F;">
+                <h5 class="modal-title">Talles</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cargarTalles()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form name="form" #form="ngForm">
+                    <div class="talle_div_principal">
+                        <h5 style="color: #10849B ; margin-bottom: 63px;">Agregar talle nuevo</h5>
+                        <input [(ngModel)] = "servicio.talle.talle" class="form-control" style="width: 180px;" type="text" name="talle" id="talle" placeholder="Talle"  maxLength="10"
+                        minlength="1" required> <br>
+                        <button  
+                            (click) = "agregar()"
+                            style=" width:180px;      margin-bottom: 92px;"
+                            class="btn-danger"
+                            [disabled]="form.invalid "
+                            >Agregar</button>
+
+                    </div>
+                    <div style="  border-top: 1px solid #10849B;
+                    padding-top: 23px;
+                    margin-top: -53px;
+                  display: flex;
+                    justify-content: space-evenly;">
+                      <div class="row" style="    display: flex;  
+                      justify-content: center;" [hidden]= "eliminartalle">
+                        <p  (click) ="eliminar(talles)" class="col-md-3 talles_P" style="background-color: #EE477F;
+                        padding: 1%;
+                        max-width: 130px;
+                        border-radius: 15px;
+                        color: white;
+                        min-width: 65px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        align-items: center;
+                        display: grid;" *ngFor="let talles of servicio.talleslista"  >{{talles.talle}} </p>
+                        </div>
+                        <div [hidden] = "!eliminartalle">
+                        <h5 style="color: #10849B ; margin-bottom: 63px;">desea eliminar el talle "{{talleParaEliminar.talle}}"</h5>
+                            
+                            <button class="btn-danger" (click)="eliminarConfirmado()">confirmar</button>
+                            <button class="btn-danger" (click)= "cancelar()">cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<app-modal-producto (reload)="iniciar()"></app-modal-producto>
+<app-modal-stock (reload)="iniciar()"></app-modal-stock>
+<div
+  class="my-3 p-3 bg-white rounded shadow-sm"
+  style="margin-top: 0 !important;"
+>
+  <div class="encabezado" style="justify-content: space-between;">
+    <div class="nuevo-Producto">
+      <img
+        class="zoomBoton pointer nuevo-img"
+        src="assets\new.png"
+        (click)="nuevoProducto()"
+        data-toggle="modal"
+        data-target="#modalProducto"
+      />
+    </div>
+
+    <h1 class="titulo">Productos</h1>
+
+    <!--<button class="btn btn-success" (click)="cargarProductosActivos()">
+      Activos
+    </button>
+    <button class="btn btn-danger" (click)="cargarAllProductos()">
+      Eliminados
+    </button> -->
+
+    <div
+      class="buscador"
+      style="
+        display: flex;
+        place-content: space-around space-between;
+        align-items: center;
+      "
+    >
+      <input
+        style="width: 100%;"
+        [(ngModel)]="buscartxt"
+        class="form-control mr-sm-2 buscar"
+        type="text"
+        placeholder="Buscar por Nombre"
+        aria-label="Search"
+        maxlength="15"
+        (keyup)="buscar()"
+      />
+
+      <img
+        hidden
+        class="botones zoomBoton"
+        (click)="buscar()"
+        src="assets\buscar.png"
+      />
+    </div>
+  </div>
+
+  <div class="container" *ngIf="true">
+    <div class="row">
+      <div
+        *ngFor="let Producto of productos"
+        class="col-md-3 zoomBoton"
+        style="margin-bottom: 5px; cursor: pointer;"
+      >
+        <div class="card mb-3 shadow-sm">
+          <div class="card-header text-center" style="background-color: white;">
+            <h5 class="text-gray-dark">
+              {{ Producto.nombre }}
+            </h5>
+          </div>
+          <img
+            src="assets\{{ Producto.imagen }}"
+            style="width: 100%;"
+            (click)="modificarProducto(Producto)"
+            data-toggle="modal"
+            data-target="#modalProducto"
+          />
+
+          <div class="card-body">
+            <div class="prueba">
+              <button
+                class="btn btn-danger btn-block"
+                (click)="obtenerTalles(Producto)"
+                data-toggle="modal"
+                data-target="#modalStock"
+              >
+                STOCK
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div style="display:none;" class="paginacion">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li [hidden]="pageButton" class="page-item" (click)="previous()">
+          <button style="margin-right: 20px;" class="page-link pointer">Anterior</button>
+        </li>
+
+        <li [hidden]="true" class="page-item">
+          <button class="page-link pointer" (click)="next()">Siguiente</button>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
+</div>

@@ -1,0 +1,53 @@
+@media(max-width:860px){
+.div_principal{
+    display: grid!important;
+    justify-items: center!important;
+}
+.talles_parr{
+    width: 200px!important;
+    border-radius: 50px;
+}
+.div_ejecutar{
+    justify-content: center!important;
+}
+.footer_options{
+display: block!important;
+}
+.btn_talles{
+    margin-top: 15px;
+    width: 200px!important;
+}
+}
+
+.div_principal{
+    display: flex;  align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #EE477F;
+}
+
+
+.talles_parr{
+    border: 1px solid #10849B;
+    width: 80px;
+    height: 71px;
+    align-items: center;
+    display: grid;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    background: #10849B;
+    border-radius: 50px;
+    min-width: 100px;
+}
+.div_ejecutar{
+    display: flex;
+          justify-content: flex-end;
+    padding: 3%;
+}
+
+.footer_options{
+    align-items: center;
+   
+    display: flex;
+    justify-content: space-between;
+}

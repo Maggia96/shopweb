@@ -1,0 +1,81 @@
+<div style="text-align: center; margin: 3%;">
+  <h1 class="titulo">Estadisticas</h1>
+</div>
+
+<div style=" width: 125px;
+ position: fixed; bottom: 1%; right: 1%; z-index: 999;">
+<input  class = "form-control"type="text" name="anio" id="anio" maxlength="4"    (keypress)="onlyNumberKey($event)" [(ngModel)] = "anio" >
+<button class="form-control btn-danger" (click)="actualizar()" >Actualizar</button>
+</div>
+
+
+
+<div class="row" style="margin-bottom: 50px; margin-top: 50px;">
+  <div class="col-md-4">
+    <canvas
+    baseChart
+    [legend]="false"
+
+
+    [data]="pieChartData5"
+    [labels]="pieChartLabels5"
+    [chartType]="pieChartType"
+    [colors]="pieChartColor"
+  ></canvas>
+  <h5 style="text-align: center;">Talles</h5>
+  </div>
+  <div class="col-md-4">
+    <canvas
+        baseChart
+        [legend]="false"
+        [data]="pieChartData4"
+        [labels]="pieChartLabels4"
+        [chartType]="pieChartType"
+        [colors]="pieChartColor"
+      ></canvas>
+      <h5 style="text-align: center;">Ganancias por mes {{anio}}</h5>
+  </div>
+  <div class="col-md-4">
+    <canvas
+    baseChart
+    [legend]="false"
+    [data]="pieChartData3"
+    [labels]="pieChartLabels3"
+    [chartType]="pieChartType"
+    [colors]="pieChartColor"
+  ></canvas>
+  <h5 style="text-align: center;">Ventas por mes {{anio}}</h5>
+  </div>
+  
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <canvas
+      baseChart
+      [legend]="false"
+      [data]="pieChartData"
+      [labels]="pieChartLabels"
+      [chartType]="pieChartType"
+      [colors]="pieChartColor"
+    ></canvas>
+    <h5 style="text-align: center;">Activos {{   PlataEnRopa +
+      totalEfectivo[0].Total}}</h5>
+   
+    </div>
+    <div class="col-md-6">
+      <canvas
+      baseChart
+      [legend]="false"
+      [data]="pieChartData2"
+      [labels]="pieChartLabels2"
+      [chartType]="pieChartType"
+      [colors]="pieChartColor"
+    ></canvas>
+    <h5 style="text-align: center;">Gastos {{anio}}</h5>
+    </div>
+   
+    
+    </div>
+
+
+

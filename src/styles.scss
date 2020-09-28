@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+
+h1,h2,h3,h4,h5,p,span{
+    font-family: cursive;    
+}
+
+.btn-danger:not(:disabled):not(.disabled).active, .btn-danger:not(:disabled):not(.disabled):active, .show>.btn-danger.dropdown-toggle{
+    background-color: #10849B!important;
+    border-color: #EE477F!important;
+}
+.btn-danger{
+    background-color:#10849B;
+    border-color: #EE477F;
+}
+
+input.form-control , textarea{
+    border-color: #10849B!important;
+    border-bottom: 2px solid #EE477F!important;
+    border-radius: 20px!important;
+}
+
+
+.btn-primary{
+    background-color: #10849B!important;
+}
+.btn-primary.disabled, .btn-primary:disabled{
+    background-color: #EE477F!important;
+
+}
+.card.mb-3.shadow-sm{
+    border-color: #EE477F!important;
+}
+.card-header.text-center {
+    border-bottom: 1px solid #10849B !important;
+}
+h1.titulo{
+    border-bottom: 1px solid #EE477F;
+    color: #10849B;
+}
+.btn-danger:hover{
+    background-color: #EE477F!important;
+    border-color: #10849B!important;
+}
+h5.text-gray-dark{
+    color: #10849B!important;
+}
+h5.modal-title{
+    color: #10849B!important;
+
+}
+.btn-outline-danger {
+    color: #EE477F;
+    border-color: #EE477F;
+}
+.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #EE477F!important;
+    border-color: #EE477F!important;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light{
+    background-color: #10849B!important;
+    border-bottom: 1px solid #EE477F;
+    padding: 2%;
+
+}
+.navbar-light .navbar-nav .nav-link{
+    color:white;
+    margin-left: 20px;
+    font-family: cursive;
+    font-size: 16px;
+    font-weight: 100!important;
+}
+a.nav-item.nav-link.active{
+    color: white!important;
+  
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+div#navbarNavAltMarkup{
+    justify-content: flex-end;
+
+}
+a.navbar-brand{
+    color: white!important;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+button {
+    border-radius: 20px!important;
+    height: 40px!important;
+    min-width: 125px!important;
+    outline: none!important;
+    cursor: pointer!important;
+}
+label{
+    color: #10849B;
+   border-bottom: 1px solid #EE477F!important;
+   border-radius: 5px;
+}

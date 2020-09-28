@@ -1,0 +1,96 @@
+
+<html>
+
+    <div style="    padding: 2%;
+    justify-content: center;
+   
+    align-items: flex-end;
+    position: fixed;
+    border: 1px;
+    bottom: 1px;
+    background: white;
+    z-index: 99999;" >
+    <div>
+        <div>
+            <input type="checkbox" [(ngModel)]="PrecioBox" name="precio" id="precio"> <label style="margin-left: 10px;" for="">Ocultar precio</label>
+        </div>
+        <label for="">Talle</label>
+    <select  style="TEXT-ALIGN: CENTER;
+    margin-left: 1%; text-transform: uppercase; border-color: #10849B;  border-bottom: 2px solid #EE477F;
+    color: #10849B;
+    width: 85px;" [(ngModel)]="servicio.talleSeleccionado" name="talles" id="talles">
+    <option value="" > </option>>
+    <option *ngFor="let talles of servicio.talleslista" value="{{talles.id}}">{{talles.talle}}</option>
+    </select></div>
+    
+    <div>
+        <label for="">sexo</label>
+    <select style="TEXT-ALIGN: CENTER;
+    margin-left: 1%; text-transform: uppercase; border-color: #10849B;  border-bottom: 2px solid #EE477F;
+    color: #10849B;
+    width: 85px;" [(ngModel)]="sexo" name="sexo" id="sexo">
+    <option value="" > </option>>
+    <option  value="M">M</option>
+    <option  value="F">F</option>
+    </select></div>
+
+    <button (click)="buscar()" class="btn-danger" >Buscar</button> <br>
+    
+<button (click)="test()" class="btn-danger" >Todo</button>
+    </div>
+
+
+<body id="content" #content>
+    <div >
+
+     <div class="container">
+    <div class="row" >
+      <div
+        *ngFor="let Producto of productos"
+        class="col-md-3 zoomBoton"
+        style="margin-bottom: 110px; cursor: pointer;"
+      >
+        <div class="card mb-3 shadow-sm">
+          <div class="card-header text-center" style="background-color: white;">
+            <h5 class="text-gray-dark">
+              {{ Producto.nombre }}
+            </h5>
+          </div>
+          <img
+            src="assets/{{ Producto.imagen }}"
+            style="width: 100%;"
+          
+          />
+
+          <div class="card-body">
+            <div class="prueba">
+               
+                <button
+                class="btn btn-danger btn-block"
+            
+              >
+                {{Producto.Talle}} stock   {{Producto.Cantidad}}
+              </button>
+                <button
+                class="btn btn-danger btn-block"
+                [hidden]="PrecioBox" 
+              >
+                Precio: ${{Producto.precio}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+</body>
+<div style="position: fixed; bottom: 1px; right: 1px;">
+    <button class="btn-danger" (click)="getPDF()" >descargar</button>
+</div>
+</html>
+
